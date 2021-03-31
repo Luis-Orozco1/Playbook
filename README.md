@@ -25,52 +25,8 @@ Si deseas ejecutar este playbook en un servidor externo al tuyo
 necesitas: <br>
 - Que tu equipo cuente con Ansible.<br>
 - Tener acceso via ssh al servidor que quieras gestionar.<br>
-- Contar con un inventario de los nodos gestionados (hosts)<br>
+- Contar con un inventario de los nodos gestionados (hosts).<br>
 - Una terminal<br>
-
-
-Role Variables
---------------
-<p>
-En esta parte definimos las variables que vamos a utilizar al 
-momento de ejecutar una tarea en nuestro playbook.
-Por ejemplo, en este playbook vamos a ocupar 4 variables, 2 cuando se realice
-la subscripción de tu sistema a Red Hat y las otras 2 al 
-momento de crear el usuario Openshift.</p>
-Ejemplo:
-<pre>
-vars:
-  username: 'Administrador'
-  password: 'Contraseña'
-</pre>
-
-Y en la tarea se veria algo como lo siguiente:
-<pre>
-- name: subscription-manager
-    redhat_subscription:
-      state: present
-      username: {{username}}
-      password: {{password}}
-</pre>
- 
-
-
-Example Playbook
-----------------
-A continuacion, se muestra un ejemplo del playbook utilizando roles.<br>
-<pre>
----
-- name: Preparar nuevos nodos de Openshift
-  hosts: host3
-  remote_user: Administrador
-  roles:
-  - OcpNodos
-
-</pre>
-<p> Como podemos observar en el ejemplo, definimos un nombre para nuestro playbook
-en la parte de <code>- name </code>, definimos un host al cual nos queramos conectar,
-ponemos el nombre del usuario remoto del servidor y ya por ultimo definimos el nombre
-del rol que vamos a utilizar en este caso <code>- OcpNodos </code>.<p><br>
 
 
 Roles
@@ -100,6 +56,89 @@ OcpNodos/
 └── vars
     └── main.yml
 </pre>
+<p> Con este playbook solo se utilizara la parte de:
+<pre>
+* tasks - En donde se guardan todas las tareas que nuestro playbook vaya a realizar.<br>
+* vars - La parte en donde se definen las variables que vaya a utilizar nuestro playbook.<br>
+* templates - Es el archivo de plantilla que contiene texto básico que se copiará más adelante, en este caso contiene los archivos de configuracion de Docker. <br>
+</pre>
+Role Variables
+--------------
+<p>
+En esta parte definimos las variables que vamos a utilizar al 
+momento de ejecutar una tarea en nuestro playbook.
+Por ejemplo, en este playbook vamos a ocupar 4 variables, 2 cuando se realice
+la subscripción de tu sistema a Red Hat y las otras 2 al 
+momento de crear el usuario Openshift.</p>
+Ejemplo:
+<pre>
+vars:
+  username: 'Administrador'
+  password: 'Contraseña'
+</pre>
+
+Y en la tarea se veria algo como lo siguiente:
+<pre>
+- name: subscription-manager
+    redhat_subscription:
+      state: present
+      username: {{username}}
+      password: {{password}}
+</pre>
+
+Tasks Variables
+--------------
+<p>
+Es donde se guardan todas las tareas que nuestro playbook vaya a realizar.<br>
+Por ejemplo en esta parte tendremos las tareas para la configuracion de nuevos nodos, las cuales son:<br>
+</p>
+<pre>
+- Subscripción de tu S.O.
+- Habilitar repositorios rhel.
+- Deshabilitar el ipv6.
+- Instalacion de crhony.
+- Ver el estatus de la memoria.
+- Ver el estatus de CPU
+- Habilitar Selinux.
+- Activar Firewalld
+- Instalacion de paquetes.
+- Configuracion y inicializar Docker.
+- Agregar usuario Openshift.
+- Autorizar llave de usuario.
+</pre>
+<p>
+Un ejemplo de una tarea es:
+</p>
+<pre>
+ - name: Habilitar repos
+    yum:
+      name: subscription-manager
+      enablerepo:
+      - "rhel-7-server-rpms"
+      - "rhel-7-server-extras-rpms"
+      - "rhel-7-server-ose-3.11-rpms"
+      - "rhel-7-server-ansible-2.9-rpms"
+      state: present
+    become: yes
+</pre>
+
+
+Example Playbook
+----------------
+A continuacion, se muestra un ejemplo del playbook utilizando roles.<br>
+<pre>
+---
+- name: Preparar nuevos nodos de Openshift
+  hosts: host3
+  remote_user: Administrador
+  roles:
+  - OcpNodos
+
+</pre>
+<p> Como podemos observar en el ejemplo, definimos un nombre para nuestro playbook
+en la parte de <code>- name </code>, definimos un host al cual nos queramos conectar,
+ponemos el nombre del usuario remoto del servidor y ya por ultimo definimos el nombre
+del rol que vamos a utilizar en este caso <code>- OcpNodos </code>.<p><br>
 
 Author Information
 ------------------
