@@ -1,4 +1,5 @@
 Role Name
+OcpNodos
 =========
 # Configuracion para nuevos nodos de Openshift.
 Descripción.
@@ -6,7 +7,7 @@ Descripción.
 <p>
 Realiza la configuracion para crear nuevos nodos de Openshift,
 que va desde la subscripción con Red Hat de tu sistema operativo 
-hasta la creacion de un usuario Openshift.
+hasta la creacion de un usuario Openshift.<br>
 Nuestro playbook fue desarrollado utilizando roles, ya que los roles
 siguen una estructura de directorios que nos ayudan a tener un control
 en la configuracion de nuestro playbook.
@@ -25,7 +26,7 @@ necesitas: <br>
 - Tener acceso via ssh al servidor que quieras gestionar.<br>
 - Contar con un inventario de los nodos gestionados (hosts)<br>
 - Una terminal<br>
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+
 
 Role Variables
 --------------
@@ -66,9 +67,13 @@ A continuacion, se muestra un ejemplo del playbook utilizando roles.<br>
   - OcpNodos
 
 </pre>
-<p> Como podemos observar en el ejemplo, 
+<p> Como podemos observar en el ejemplo, definimos un nombre para nuestro playbook
+en la parte de <code> name </code>, definimos un host al cual nos queramos conectar,
+ponemos el nombre del usuario remoto del servidor y por ya por ultimo definimos el nombre
+del rol que vamos a utilizar.<p><br>
 
 Author Information
 ------------------
 
 An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+
