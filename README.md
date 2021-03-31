@@ -62,6 +62,8 @@ OcpNodos/
 * vars - La parte en donde se definen las variables que vaya a utilizar nuestro playbook.<br>
 * templates - Es el archivo de plantilla que contiene texto básico que se copiará más adelante, en este caso contiene los archivos de configuracion de Docker. <br>
 </pre>
+</p>
+
 Role Variables
 --------------
 <p>
