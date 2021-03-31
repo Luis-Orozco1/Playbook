@@ -1,5 +1,5 @@
 Role Name<br>
-<h2>OcpNodos</h2>
+OcpNodos
 =========
 # Configuracion para nuevos nodos de Openshift.
 Descripción.
@@ -19,7 +19,7 @@ Requirements
 Para poder ejecutar este playbook, es necesario: <br>
 - Contar con Ansible en tu equipo.<br>
 - Una terminal <br>
-- .[Guia de instalacion para Ansible].(https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html) 
+- [Guia de instalacion para Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html) 
 
 Si deseas ejecutar este playbook en un servidor externo al tuyo
 necesitas: <br>
