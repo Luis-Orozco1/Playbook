@@ -58,12 +58,11 @@ OcpNodos/
 </pre>
 <p> Con este playbook solo se utilizara la parte de:
 <pre>
-* tasks - En donde se guardan todas las tareas que nuestro playbook vaya a realizar.<br>
-* vars - La parte en donde se definen las variables que vaya a utilizar nuestro playbook.<br>
-* templates - Es el archivo de plantilla que contiene texto básico que se copiará más adelante, en este caso contiene los archivos de configuracion de Docker. <br>
+- tasks - En donde se guardan todas las tareas que nuestro playbook vaya a realizar.<br>
+- vars - La parte en donde se definen las variables que vaya a utilizar nuestro playbook.<br>
+- templates - Archivos de plantilla que contiene texto básico que se copiará más adelante, en este caso contiene los archivos de configuracion de Docker. <br>
 </pre>
 </p>
-
 Role Variables
 --------------
 <p>
@@ -88,7 +87,7 @@ Y en la tarea se veria algo como lo siguiente:
       password: {{password}}
 </pre>
 
-Tasks Variables
+Role Tasks 
 --------------
 <p>
 Es donde se guardan todas las tareas que nuestro playbook vaya a realizar.<br>
@@ -141,6 +140,18 @@ A continuacion, se muestra un ejemplo del playbook utilizando roles.<br>
 en la parte de <code>- name </code>, definimos un host al cual nos queramos conectar,
 ponemos el nombre del usuario remoto del servidor y ya por ultimo definimos el nombre
 del rol que vamos a utilizar en este caso <code>- OcpNodos </code>.<p><br>
+
+Uso
+------------------
+<p>
+Para utilizar este playbook lo unico que necesitas es pararte en tu terminal
+y ejecutar el comando:<br>
+<code> ansible-playbook playbook.yml</code>
+Nota: Recuerda que tu equipo debe contar con Ansible.</p>
+<p>
+Ahora tambien puedes utilizar el siguiente comando:<br>
+<code> ansible-playbook -i hosts playbook.yml</code>
+En donde especificas utilizar el invetario de hosts para correr tu playbook.</p>
 
 Author Information
 ------------------
