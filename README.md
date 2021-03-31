@@ -1,5 +1,5 @@
-Role Name
-OcpNodos
+Role Name<br>
+<h2>OcpNodos</h2>
 =========
 # Configuracion para nuevos nodos de Openshift.
 Descripción.
@@ -19,6 +19,7 @@ Requirements
 Para poder ejecutar este playbook, es necesario: <br>
 - Contar con Ansible en tu equipo.<br>
 - Una terminal <br>
+- .[Guia de instalacion para Ansible].(https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html) 
 
 Si deseas ejecutar este playbook en un servidor externo al tuyo
 necesitas: <br>
@@ -52,7 +53,6 @@ Y en la tarea se veria algo como lo siguiente:
       password: {{password}}
 </pre>
  
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
 
 
 Example Playbook
@@ -68,12 +68,13 @@ A continuacion, se muestra un ejemplo del playbook utilizando roles.<br>
 
 </pre>
 <p> Como podemos observar en el ejemplo, definimos un nombre para nuestro playbook
-en la parte de <code> name </code>, definimos un host al cual nos queramos conectar,
-ponemos el nombre del usuario remoto del servidor y por ya por ultimo definimos el nombre
-del rol que vamos a utilizar.<p><br>
+en la parte de <code>- name </code>, definimos un host al cual nos queramos conectar,
+ponemos el nombre del usuario remoto del servidor y ya por ultimo definimos el nombre
+del rol que vamos a utilizar en este caso <code>- OcpNodos </code>.<p><br>
 
 Author Information
 ------------------
 
 An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+
 
