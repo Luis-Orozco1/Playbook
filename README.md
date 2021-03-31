@@ -72,6 +72,35 @@ en la parte de <code>- name </code>, definimos un host al cual nos queramos cone
 ponemos el nombre del usuario remoto del servidor y ya por ultimo definimos el nombre
 del rol que vamos a utilizar en este caso <code>- OcpNodos </code>.<p><br>
 
+
+Roles
+----------------
+<p>
+Los roles siguen una estructura de directorios definida; un role es nombrado por el directorio de nivel superior. 
+Algunos de los subdirectorios contienen archivos YAML, denominados main.yml. 
+Los subdirectorios de archivos y plantillas pueden contener objetos a los que hacen referencia los archivos YAML.
+
+Una estructura de proyecto podría tener este aspecto.
+<pre>
+OcpNodos/
+├── defaults
+│   └── main.yml
+├── files
+├── handlers
+│   └── main.yml
+├── meta
+│   └── main.yml
+├── README.md
+├── tasks
+│   └── main.yml
+├── templates
+├── tests
+│   ├── inventory
+│   └── test.yml
+└── vars
+    └── main.yml
+</pre>
+
 Author Information
 ------------------
 
