@@ -1,8 +1,0 @@
----
-- name: Preparar configuracion de nodos Openshift
-  hosts: host3
-  remote_user: Admin
-  vars:
-    dns: "192.168.0.1"
-  roles:
-  - OcpNodos
